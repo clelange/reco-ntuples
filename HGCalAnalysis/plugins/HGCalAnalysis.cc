@@ -1841,26 +1841,26 @@ int HGCalAnalysis::fillLayerCluster(const edm::Ptr<reco::CaloCluster> &layerClus
       }
     }
 
-    if (fillRecHits) {
-      if (storedRecHits_.find(rh_detid) == storedRecHits_.end()) {
-        // std::cout << "in fillLayerCluster: RecHit not yet filled" <<
-        // std::endl;
-        // std::cout << "in fillLayerCluster: hit energy: " << hit->energy() <<
-        // std::endl;
-        // std::cout << "in fillLayerCluster: first hit energy: " << maxEnergy
-        // << std::endl;
-        if (hit->energy() > maxEnergy) {
-          rhSeed = rechit_index_;
-          maxEnergy = hit->energy();
-        }
-        rhIndices.push_back(rechit_index_);
-        fillRecHit(rh_detid, fraction, layer, cluster_index_);
-      } else {
-        // need to see what to do about existing rechits in case of sharing
-        std::cout << "RecHit already filled for different layer cluster: " << int(rh_detid)
-                  << std::endl;
-      }
-    }
+    // if (fillRecHits) {
+    //   if (storedRecHits_.find(rh_detid) == storedRecHits_.end()) {
+    //     // std::cout << "in fillLayerCluster: RecHit not yet filled" <<
+    //     // std::endl;
+    //     // std::cout << "in fillLayerCluster: hit energy: " << hit->energy() <<
+    //     // std::endl;
+    //     // std::cout << "in fillLayerCluster: first hit energy: " << maxEnergy
+    //     // << std::endl;
+    //     if (hit->energy() > maxEnergy) {
+    //       rhSeed = rechit_index_;
+    //       maxEnergy = hit->energy();
+    //     }
+    //     rhIndices.push_back(rechit_index_);
+    //     fillRecHit(rh_detid, fraction, layer, cluster_index_);
+    //   } else {
+    //     // need to see what to do about existing rechits in case of sharing
+    //     std::cout << "RecHit already filled for different layer cluster: " << int(rh_detid)
+    //               << std::endl;
+    //   }
+    // }
   }
 
   double pt = layerCluster->energy() / cosh(layerCluster->eta());
